@@ -26,7 +26,7 @@
 		\large{Version 3.2}
 		\\[10mm]
 
-		\includegraphics{hacker04.jpg}
+        \includegraphics{hacker04.jpg}
 		
 		\ \\[10mm]
 		
@@ -70,7 +70,7 @@ support for the GNU Readline library. If you are using the Framework on Mac OS
 X prior to 10.5.1, you will need to install GNU Readline and then recompile the Ruby
 interpreter.  Using a version of Ruby with Readline support enables tab completion
 of the console interface.  The \texttt{msfconsole} user interface is preferred for everyday
-use, but the \texttt{msfweb} interface can be useful for live demonstrations.
+use, but \texttt{msfgui} can be useful for those who prefer a graphical interface.
 
 \par
 To perform a system-wide installation, we recommend that you copy the entire
@@ -98,16 +98,15 @@ about this issue, please see the Ubuntu ticket: \url{https://bugs.launchpad.net/
 The Metasploit Framework is fully supported on the Windows platform. To install the Framework on Windows, 
 download the latest version of the Windows installer from \url{http://metasploit.com/framework/download/}, perform 
 an online update, and launch the \texttt{msfgui} interface from the Start Menu. To access a standard
-\texttt{msfconsole} interface, select the Console option from the Window menu. As an alternative, you can
-use the \texttt{msfweb} interface, which supports Mozilla Firefox and Internet Explorer.
+\texttt{msfconsole} interface, select the Console option from the Window menu.
 
 
     \section{Platform Caveats}
     \label{INSTALL-CAVEAT}
 
 \par
-When using the Framework on the Windows platform, keep in mind that \texttt{msfgui} and \texttt{msfweb} are the only
-supported user interfaces. While \texttt{msfcli} may appear to work on the command line, it will will run into
+When using the Framework on the Windows platform, keep in mind that \texttt{msfgui} is the only
+supported user interface. While \texttt{msfcli} may appear to work on the command line, it will will run into
 trouble as soon as more than one active thread is present. This can prevent most exploits, auxiliary modules,
 and plugins from functioning. This problem does not occur within Cygwin environment. The Windows platform does
 not support raw IP packet injection, packet injection, wireless driver exploitation, or SMB relaying attacks
@@ -165,14 +164,11 @@ exploit, type \texttt{info module\_name}.
 \par
 The console interface was designed to be flexible and fast. If you
 enter a command that is not recognized by the console, it will scan the system
-path to determine if it is a system command. \footnote{If you are accessing the console
-through \texttt{msfweb}, this feature has been disabled for security reasons.}
-If it finds a match, that command will be executed with the supplied arguments. This allows you to use
-your standard set of tools without having to leave the console. The console interface
-supports tab completion of known commands. The \texttt{msfweb} interface
-includes tab completion by default, but the \texttt{msfconsole} interface requires that 
-Ruby was built with the Readline library. For more information on tab completion, please
-refer to appendix \ref{REF-TAB}.
+path to determine if it is a system command. If it finds a match, that command will be
+executed with the supplied arguments. This allows you to use your standard set of tools
+without having to leave the console. The console interface also supports tab completion of
+known commands if Ruby was built with the Readline library. For more information on tab
+completion, please refer to appendix \ref{REF-TAB}.
 
 \par
 The console startup will similar to the text below.
@@ -243,23 +239,6 @@ convenient default options in the Global or module-specific datastore of
 \texttt{msfconsole}, save them, and take advantage of them in the
 \texttt{msfcli} interface. As of version 3.1, the \texttt{msfcli} interface
 will also work with auxiliary modules.
-
-    \section{The Web Interface}
-    \label{STARTED-WEB}
-
-\par
-The \texttt{msfweb} interface is based on Ruby on Rails. To access this interface,
-execute \texttt{msfweb} to start up the server. The \texttt{msfweb}
-interface uses the WEBrick web server to handle requests. By default, \texttt{msfweb} will listen
-on the loopback address (127.0.0.1) on port 55555. A log message should be displayed indicating that
-the service has started. To access the interface, open your browser to the appropriate URL 
-(\url{http://127.0.0.1:55555/} by default). The main \texttt{msfweb} interface consists of a toolbar
-containing various icons and a background with the metasploit logo. If you want access to a console, 
-click the Console link. This console interface is nearly identical to the standard 
-\texttt{msfconsole} interface. The Exploits, Auxiliary, and Payloads links will walk you through 
-the process of selecting a module, configuring it, and running it. Once an exploit is run and
-a session is created, you can access these sessions from the Sessions link. These icons will open up
-a sub-window within the page. These windows can be moved, minimized, maximized, and closed.
 
 \pagebreak
 \chapter{The DataStore}
@@ -815,10 +794,6 @@ We recommend that you use a robust, secure terminal emulator when
 utilizing the command-line interfaces. Examples include \texttt{konsole},
 \texttt{gnome-terminal}, and recent versions of \texttt{PuTTY}.
 
-\par
-We do not recommend that the \texttt{msfweb} interface be used on untrusted
-networks. 
-
 	\section{Console Interfaces}
 \par
 The console does not perform terminal escape sequence filtering, this
@@ -829,22 +804,6 @@ hostile escape sequences. Please see the Terminal Emulator Security Issues paper
 below for more information on this topic:
 
 \url{http://marc.info/?l=bugtraq&m=104612710031920&q=p3}
-
-
-	\section{Web Interface}
-\par
-The \texttt{msfweb} interface does not adequately filter certain arguments,
-allowing a hostile web site operator to perform a cross-site scripting
-attack on the \texttt{msfweb} user.
-
-\par
-The \texttt{msfweb} interface does not provide any access control functionality. If
-the service is configured to listen on a different interface (default is
-loopback), a malicious attacker could abuse this to exploit remote systems
-and potentially access local files. The local file access attack can be
-accomplished by malicious arguments to the payloads which use a local file
-as input and then exploiting a (fake) service to obtain the file contents.
-	
 
 \pagebreak
 \chapter{General Tips}
