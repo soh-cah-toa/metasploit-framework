@@ -30,7 +30,7 @@
 		
 		\ \\[10mm]
 		
-        \small{\url{http://www.metasploit.com/}}
+        \small{\url{http://metasploit.com}}
 
         \rule{10cm}{1pt} \\[4mm]
         \renewcommand{\arraystretch}{0.5}
@@ -87,7 +87,8 @@ breaks many of the Metasploit Framework modules. The only way to work around thi
 bug is by downgrading to an older version of 1.8.6 or by upgrading to the latest
 stable snapshot of 1.8.7. The latest stable snapshot can be downloaded from 
 \url{ftp://ftp.ruby-lang.org/pub/ruby/stable-snapshot.tar.gz}. For more information
-about this issue, please see the Ubuntu ticket: \url{https://bugs.launchpad.net/bugs/282302}.
+about this issue, please see the related Ubuntu ticket at
+\url{https://bugs.launchpad.net/ubuntu/+source/ruby1.8/+bug/282302}.
 
 
 
@@ -95,10 +96,11 @@ about this issue, please see the Ubuntu ticket: \url{https://bugs.launchpad.net/
     \label{INSTALL-WIN32}
 
 \par
-The Metasploit Framework is fully supported on the Windows platform. To install the Framework on Windows, 
-download the latest version of the Windows installer from \url{http://metasploit.com/framework/download/}, perform 
-an online update, and launch the \texttt{msfgui} interface from the Start Menu. To access a standard
-\texttt{msfconsole} interface, select the Console option from the Window menu.
+The Metasploit Framework is fully supported on the Windows platform. To install the
+Framework on Windows, download the latest version of the Windows installer from
+\url{http://metasploit.com/download}, perform an online update, and launch the
+\texttt{msfgui} interface from the Start Menu. To access a standard \texttt{msfconsole}
+interface, select the Console option from the Window menu.
 
 
     \section{Platform Caveats}
@@ -127,8 +129,9 @@ of the Ruby interpreter (1.8.4+). Every stable version of the Framework is teste
 \end{itemize}
 
 \par
-For information about manually installing the framework, including all of the required dependencies needed
-to use the new \texttt{msfgui} interface, please see the framework web site: \url{http://metasploit.com/framework/support}
+For information about manually installing the Framework, including all of the required
+dependencies needed to use the new \texttt{msfgui} interface, please see the Framework
+support site at \url{http://metasploit.com/get-support}.
 
     \section{Updating the Framework}
     \label{INSTALL-UPDATE}
@@ -139,8 +142,8 @@ old \texttt{msfupdate} tool is no longer supported. Windows users can click on
 the Online Update link within the Metasploit 3 program folder on the Start Menu.
 To obtain the latest updates on a Unix-like platform, change into the Framework 
 installation directory and execute \texttt{svn update}. If you are accessing the
-internet through a HTTP proxy server, please see the Subversion FAQ on proxy 
-access: \url{http://subversion.tigris.org/faq.html#proxy}
+internet through an HTTP proxy server, please see the Subversion FAQ for proxy 
+access at \url{http://subversion.apache.org/faq.html#proxy}.
 
 \pagebreak
 
@@ -607,10 +610,8 @@ The Meterpreter is an advanced multi-function payload that can be dynamically
 extended at run-time. In normal terms, this means that it provides you with a
 basic shell and allows you to add new features to it as needed. Please refer
 to the Meterpreter documentation for an in-depth description of how it works
-and what you can do with it. The Meterpreter manual can be found in the
-``documentation'' subdirectory of the Framework as well as online at:
-
-\url{http://www.metasploit.com/documents/meterpreter.pdf}
+and what you can do with it. The Meterpreter manual is available online at
+\url{http://dev.metasploit.com/documents/meterpreter.pdf}.
 
 \section{PassiveX Payloads}
 
@@ -639,9 +640,7 @@ system and authentication settings that have already been configured. The
 PassiveX payloads will only work when the target system has Internet Explorer
 6.0 installed (not 5.5 or 7.0). For more information about PassiveX,
 please see the Uninformed Journal article titled "Post-Exploitation on Windows
-using ActiveX Controls", located online at:
-
-\url{http://www.uninformed.org/?v=1&a=3&t=pdf}
+using ActiveX Controls", located online at \url{http://www.uninformed.org/?v=1&a=3&t=pdf}.
 
 \section{Chainable Proxies}
 \par
@@ -687,7 +686,7 @@ external/source/dllinject directory in the Framework. In additional to normal
 DLL Injection, version 3.2 and newer include support for Reflective DLL Injection
 payloads as well. For more information about Reflective DLL Injection, please see
 the Harmony Security paper, located at 
-\url{http://www.harmonysecurity.com/files/HS-P005_ReflectiveDllInjection.pdf}
+\url{http://www.harmonysecurity.com/files/HS-P005_ReflectiveDllInjection.pdf}.
 
 \section{VNC Server DLL Injection}
 \par
@@ -768,9 +767,10 @@ archive.
 
 \section{Mailing List}
 \par
-Metasploit hosts two mailing lists -- Framework and Framework-Hackers. You can find
-information about these mailing lists, along with their archives, at the following URL:
-\url{http://spool.metasploit.com/}
+Metasploit hosts the \texttt{framework} mailing list for general discussion and help. To
+subscribe to the mailing list, visit \url{http://mail.metasploit.com/mailman/listinfo/framework}.
+Additionally, the \texttt{framework} archives can be viewed at
+\url{http://mail.metasploit.com/pipermail/framework}.
 
 \section{Developers}
 \par
@@ -795,10 +795,9 @@ The console does not perform terminal escape sequence filtering, this
 could allow a hostile network service to do Bad Things (TM) to your terminal
 emulator when the exploit or check commands are used. We suggest that you
 use a terminal emulator which limits the functionality available through
-hostile escape sequences. Please see the Terminal Emulator Security Issues paper
-below for more information on this topic:
-
-\url{http://marc.info/?l=bugtraq&m=104612710031920&q=p3}
+hostile escape sequences. For more information on this topic, please see the
+Terminal Emulator Security Issues paper at
+\url{http://marc.info/?l=bugtraq&m=104612710031920&q=p3}.
 
 \pagebreak
 \chapter{General Tips}
