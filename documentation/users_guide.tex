@@ -45,10 +45,10 @@
 \chapter{Introduction}
 
 \par
-This is the official user guide for version 4.2 of the Metasploit Framework. This 
+This is the official user guide for version 4.2 of the Metasploit Framework. This
 guide is designed to provide an overview of what the framework is, how it works,
 and what you can do with it. The latest version of this document can be found
-on the Metasploit Framework web site. 
+on the Metasploit Framework web site.
 
 \par
 The Metasploit Framework is a platform for writing, testing, and using exploit code.
@@ -68,8 +68,8 @@ created directory, and executing your preferred user interface. We strongly
 recommend that you use a version of the Ruby interpreter that was built with
 support for the GNU Readline library. If you are using the Framework on Mac OS
 X prior to 10.5.1, you will need to install GNU Readline and then recompile the Ruby
-interpreter.  Using a version of Ruby with Readline support enables tab completion
-of the console interface.  The \texttt{msfconsole} user interface is preferred for everyday
+interpreter. Using a version of Ruby with Readline support enables tab completion
+of the console interface. The \texttt{msfconsole} user interface is preferred for everyday
 use, but \texttt{msfgui} can be useful for those who prefer a graphical interface.
 
 \par
@@ -77,15 +77,15 @@ To perform a system-wide installation, we recommend that you copy the entire
 Framework directory into a globally accessible location (/usr/local/msf) and
 then create symbolic links from the msf* applications to a directory in the
 system path (/usr/local/bin). User-specific modules can be placed into
-\texttt{HOME/.msf3/modules} directory.  The structure of this directory should
+\texttt{HOME/.msf3/modules} directory. The structure of this directory should
 mirror that of the global modules directory found in the framework
 distribution.
 
 \par
 The latest stable release of the Ruby interpreter (1.8.7-p72) contains a bug which
-breaks many of the Metasploit Framework modules. The only way to work around this 
+breaks many of the Metasploit Framework modules. The only way to work around this
 bug is by downgrading to an older version of 1.8.6 or by upgrading to the latest
-stable snapshot of 1.8.7. The latest stable snapshot can be downloaded from 
+stable snapshot of 1.8.7. The latest stable snapshot can be downloaded from
 \url{ftp://ftp.ruby-lang.org/pub/ruby/stable-snapshot.tar.gz}. For more information
 about this issue, please see the related Ubuntu ticket at
 \url{https://bugs.launchpad.net/ubuntu/+source/ruby1.8/+bug/282302}.
@@ -112,7 +112,7 @@ supported user interface. While \texttt{msfcli} may appear to work on the comman
 trouble as soon as more than one active thread is present. This can prevent most exploits, auxiliary modules,
 and plugins from functioning. This problem does not occur within Cygwin environment. The Windows platform does
 not support raw IP packet injection, packet injection, wireless driver exploitation, or SMB relaying attacks
-without specific configuration. In most cases, those features can be accessed by running Metasploit inside of a 
+without specific configuration. In most cases, those features can be accessed by running Metasploit inside of a
 Linux-based virtual machine (such as BackTrack 3 in VMWare).
 
     \section{Supported Operating Systems}
@@ -121,7 +121,7 @@ Linux-based virtual machine (such as BackTrack 3 in VMWare).
 \par
 The Framework should run on almost any UNIX-based operating system that includes
 a complete and modern version of the Ruby interpreter (1.8.4+). Every stable
-version of the Framework is tested with three primary platforms: 
+version of the Framework is tested with three primary platforms:
 
 \begin{itemize}
 \item Linux 2.6 (x86, ppc)
@@ -141,9 +141,9 @@ support site at \url{http://metasploit.com/get-support}.
 The Framework can be updated using a standard \texttt{Subversion} client. The
 old \texttt{msfupdate} tool is no longer supported. Windows users can click on
 the Online Update link within the Metasploit 3 program folder on the Start Menu.
-To obtain the latest updates on a UNIX-like platform, change into the Framework 
+To obtain the latest updates on a UNIX-like platform, change into the Framework
 installation directory and execute \texttt{svn update}. If you are accessing the
-internet through an HTTP proxy server, please see the Subversion FAQ for proxy 
+internet through an HTTP proxy server, please see the Subversion FAQ for proxy
 access at \url{http://subversion.apache.org/faq.html#proxy}.
 
 \pagebreak
@@ -155,15 +155,15 @@ access at \url{http://subversion.apache.org/faq.html#proxy}.
 
 \par
 After you have installed the Framework, you should verify that everything is
-working properly  The easiest way to do this is to execute the
+working properly. The easiest way to do this is to execute the
 \texttt{msfconsole} user interface. If you are using Windows, start the \texttt{msfgui}
 interface and access the \texttt{Console} link from the Window menu.
 The console should display an ASCII art logo, print the current version, some module
 counts, and drop to a "msf> " prompt. From this prompt, type \texttt{help} to get a list of
 valid commands. You are currently in the "main" mode; this allows you to list
-exploits, list payloads, and configure global options.  To list all available
+exploits, list payloads, and configure global options. To list all available
 exploits, type \texttt{show exploits}. To obtain more information about a given
-exploit, type \texttt{info module\_name}. 
+exploit, type \texttt{info module\_name}.
 
 \par
 The console interface was designed to be flexible and fast. If you
@@ -195,7 +195,7 @@ The console startup will similar to the text below.
 + -- --=[ 786 exploits - 424 auxiliary - 127 post
 + -- --=[ 238 payloads - 27 encoders - 8 ops
 
-msf >            
+msf >
 \end{verbatim}
 
     \section{The GUI Interface}
@@ -206,7 +206,7 @@ The \texttt{msfgui} interface was introduced in version 3.1 and provides the fun
 of \texttt{msfconsole} in addition to many new features. To access a \texttt{msfconsole}
 shell, select the Console option from the Window menu. To search for a module within the
 module tree, enter a string or regular expression into the search box and click the button
-labeled Find. All matching modules will appear the tree below. To execute a module, 
+labeled Find. All matching modules will appear the tree below. To execute a module,
 double-click its name in the tree, or right-click its name and select the Execute option.
 To view the source code of any module, right-click its name and select the View Code option.
 
@@ -217,7 +217,7 @@ the module will appear in the main window under the Module Output tab. Any sessi
 by the module will appear in the Sessions view in the main window. To access a session,
 double-click the session name in the view, or open a Console and use the \texttt{sessions}
 command to interact with the shell. Meterpreter sessions will spawn a shell when double-clicked,
-but also offer a process and file browser via the right-click context menu. 
+but also offer a process and file browser via the right-click context menu.
 
 
     \section{The Command Line Interface}
@@ -246,15 +246,15 @@ will also work with auxiliary modules.
 \chapter{The DataStore}
 
 \par
-The datastore system is a core component of the Framework.  The interfaces use
+The datastore system is a core component of the Framework. The interfaces use
 it to configure settings, the payloads use it patch opcodes, the exploits
 use it to define parameters, and it is used internally to pass options between
-modules.  There are two types of datastores.  First, there is a single global
+modules. There are two types of datastores. First, there is a single global
 datastore that can be accessed using the \texttt{setg} and \texttt{unsetg}
-commands from \texttt{msfconsole}.  Second, each module instance has its own
-datastore in which arbitrary options or parameters can be stored.  For
+commands from \texttt{msfconsole}. Second, each module instance has its own
+datastore in which arbitrary options or parameters can be stored. For
 example, when the \texttt{RHOST} option is set, its value is stored in the
-datastore of the module instance that it was set relative to.  In the event
+datastore of the module instance that it was set relative to. In the event
 that an option was not set in a module instance's datastore, the framework
 will consult the global datastore to see if it was set there.
 
@@ -287,7 +287,7 @@ switching to another module via the \texttt{use} command will result in the
 module datastore for the current module being swapped out with the datastore
 of the new module. If no module is currently active, the \texttt{set} and
 \texttt{unset} commands will operate on the global datastore. Switching back
-to the original module will initialize a new datastore for the module.  To
+to the original module will initialize a new datastore for the module. To
 persist the contents of either the global or module-specific datastores, the
 \texttt{save} command should be used.
 
@@ -298,7 +298,7 @@ persist the contents of either the global or module-specific datastores, the
 The \texttt{save} command can be used to synchronize the Global and all module
 datastores to disk. The saved environment is written to
 \texttt{HOME/.msf3/config} and will be loaded when any of the user interfaces
-are executed.  
+are executed.
 
     \section{DataStore Efficiency}
     \label{ENV-EFF}
@@ -306,14 +306,14 @@ are executed.
 \par
 This split datastore system allows you save time during exploit development
 and penetration testing. Common options between exploits can be defined in the
-Global datastore once and automatically used in any exploit you load thereafter.  
+Global datastore once and automatically used in any exploit you load thereafter.
 
 \par
 The example below shows how the \texttt{LPORT}, \texttt{LHOST}, and
 \texttt{PAYLOAD} global datastore can be used to save time when exploiting a
 set of Windows-based targets. If this datastore was set and a Linux exploit
 was being used, the module datastore (via \texttt{set} and \texttt{unset})
-could be used to override these defaults.  
+could be used to override these defaults.
 
 {\footnotesize
 \begin{verbatim}
@@ -347,21 +347,21 @@ Payload options:
 \par
 The datastore can be used to configure many aspects of the Framework, ranging
 from user interface settings to specific timeout options in the network socket
-API. This section describes the most commonly used environment variables.  
+API. This section describes the most commonly used environment variables.
 
 \par
 For a complete listing of all environment variables, please see the file
-Environment.txt in the ``documentation'' subdirectory of the Framework. 
+Environment.txt in the ``documentation'' subdirectory of the Framework.
 
 	\subsection{LogLevel}
 \par
 This variable is used to control the verbosity of log messages provided
-by the components of the Framework.  If this variable is not set, framework
-logging is disabled.  Setting this variable to 0 will turn on default log
-messages.  A value of 1 will enable additional, non-verbose log messages that
-may be helpful in troubleshooting.  A value of 2 will enable verbose debug
-logging.  A value of 3 will enable all logging and may generate a large amount
-of log messages.  Only use this when much additional information is required.
+by the components of the Framework. If this variable is not set, framework
+logging is disabled. Setting this variable to 0 will turn on default log
+messages. A value of 1 will enable additional, non-verbose log messages that
+may be helpful in troubleshooting. A value of 2 will enable verbose debug
+logging. A value of 3 will enable all logging and may generate a large amount
+of log messages. Only use this when much additional information is required.
 Log files are stored in the logs subdirectory of the user's configuration
 directory (~/.msf3/logs). Unlike version 2 of the framework, debugging
 messages are never written directly to the console.
@@ -370,8 +370,8 @@ messages are never written directly to the console.
 \par
 This variable can be used to add additional paths from which to load modules.
 By default, the framework will load modules from the modules directory found
-within the framework install.  It will also load modules from ~/.msf3/modules
-if such a path exists.  This variable makes it possible to statically define
+within the framework install. It will also load modules from ~/.msf3/modules
+if such a path exists. This variable makes it possible to statically define
 additional paths from which to load modules.
 
 \pagebreak
@@ -381,12 +381,12 @@ additional paths from which to load modules.
 	\section{Choosing a Module}
 \par
 From the \texttt{msfconsole} interface, you can view the list of modules that
-are available for you to interact with.  You can see all available modules
-through the \texttt{show all} command.  To see the list of modules of a
+are available for you to interact with. You can see all available modules
+through the \texttt{show all} command. To see the list of modules of a
 particular type you can use the \texttt{show moduletype} command, where
-\textit{moduletype} is any one of exploits, encoders, payloads, and so on.  
+\textit{moduletype} is any one of exploits, encoders, payloads, and so on.
 You can select a module with the \texttt{use} command by specifying the
-module's name as the argument.  The \texttt{info} command can be used to view
+module's name as the argument. The \texttt{info} command can be used to view
 information about a module without using it.
 
 	\section{Exploit Modules}
@@ -397,14 +397,14 @@ encapsulate an exploit.
 
 		\subsection{Configuring the Active Exploit}
 
-\par 
+\par
 Once you have selected an exploit with the \texttt{use} command, the next step
 is to determine what options it requires. This can be accomplished with the
 \texttt{show options} command. Most exploits use \texttt{RHOST} to specify the
 target address and \texttt{RPORT} to set the target port. Use the \texttt{set}
 command to configure the appropriate values for all required options. If you
 have any questions about what a given option does, refer to the module source
-code.  Advanced options are available with some exploit modules, these can be
+code. Advanced options are available with some exploit modules, these can be
 viewed with the \texttt{show advanced} command. Options useful for IDS and IPS
 evasion can be viewed with the \texttt{show evasion} command.
 
@@ -415,11 +415,11 @@ The \texttt{check} command can be used to determine whether the target
 system is vulnerable to the active exploit module. This is a quick way to
 verify that all options have been correctly set and that the target is
 actually vulnerable to exploitation. Not all exploit modules have implemented
-the check functionality.  In many cases it is nearly impossible to determine
+the check functionality. In many cases it is nearly impossible to determine
 whether a service is vulnerable without actually exploiting it. A
 \texttt{check} command should never result in the target system crashing or
 becoming unavailable. Many modules display version information and
-expect you to analyze it before proceeding.  
+expect you to analyze it before proceeding.
 
 		\subsection{Selecting a Target}
 
@@ -427,7 +427,7 @@ expect you to analyze it before proceeding.
 set to the index number of the desired target. The \texttt{show targets}
 command will list all targets provided by the exploit module. Many exploits
 will default to a brute-force target type; this may not be desirable in all
-situations. 
+situations.
 
 		\subsection{Selecting the Payload}
 
@@ -437,7 +437,7 @@ all payloads compatible with the current exploit. If you are behind a
 firewall, you may want to use a bind shell payload, if your target is behind
 one and you are not, you would use a reverse connect payload. You can use the
 \texttt{info payload\_name} command to view detailed information about a given
-payload.  
+payload.
 
 \par
 Once you have decided on a payload, use the \texttt{set} command to specify
@@ -455,7 +455,7 @@ payload, you should not expect the exploit to work.
 
 \par The \texttt{exploit} command will launch the attack. If everything went
 well, your payload will execute and potentially provide you with an
-interactive command shell on the exploited system. 
+interactive command shell on the exploited system.
 
 	\section{Auxiliary Modules}
 
@@ -467,9 +467,9 @@ and even fuzzing.
 		\subsection{Running an Auxiliary Task}
 
 \par
-Auxiliary modules are quite a bit similar to exploit modules.  Instead of
+Auxiliary modules are quite a bit similar to exploit modules. Instead of
 having targets, they have actions, which are specified through the
-\texttt{ACTION} option.  To run an auxiliary module, you can either use the
+\texttt{ACTION} option. To run an auxiliary module, you can either use the
 \texttt{run} command, or you can use the \texttt{exploit} command -- they're
 both the same thing.
 
@@ -479,20 +479,20 @@ msf auxiliary(ms06_035_mailslot) > set RHOST 1.2.3.4
 RHOST => 1.2.3.4
 msf auxiliary(ms06_035_mailslot) > run
 [*] Mangling the kernel, two bytes at a time...
-\end{verbatim} 
+\end{verbatim}
 
 	\section{Payload Modules}
 
 \par
 Payload modules encapsulate the arbitrary code (shellcode) that is executed as
-the result of an exploit succeeding.  Payloads typically build a communication
+the result of an exploit succeeding. Payloads typically build a communication
 channel between Metasploit and the victim host.
 
 		\subsection{Generating a Payload}
 
 \par
-The console interface supports generating different forms of a payload.  This
-is a new feature in Metasploit 3.0.  To generate payloads, first select a
+The console interface supports generating different forms of a payload. This
+is a new feature in Metasploit 3.0. To generate payloads, first select a
 payload through the \texttt{use} command.
 
 \begin{verbatim}
@@ -511,13 +511,13 @@ OPTIONS:
     -s <opt>  NOP sled length.
     -t <opt>  The output type: ruby, perl, c, or raw.
 
-msf payload(shell_reverse_tcp) >  
+msf payload(shell_reverse_tcp) >
 \end{verbatim}
 
 \par
 Using the options supported by the \texttt{generate} command, different
-formats of a payload can be generated.  Some payloads will require options
-which can be specified through the \texttt{-o} parameter.  Additionally, a
+formats of a payload can be generated. Some payloads will require options
+which can be specified through the \texttt{-o} parameter. Additionally, a
 format to convey the generated payload can be specified through the
 \texttt{-t} parameter. To save the resulting data to a local file, pass the
 \texttt{-f} parameter followed by the output file name.
@@ -550,7 +550,7 @@ msf payload(shell_reverse_tcp) > generate -t ruby
 "\xce\x53\xff\xd6\x6a\xff\xff\x37\xff\xd0\x68\xe7\x79\xc6" +
 "\x79\xff\x75\x04\xff\xd6\xff\x77\xfc\xff\xd0\x68\xf0\x8a" +
 "\x04\x5f\x53\xff\xd6\xff\xd0"
-msf payload(shell_reverse_tcp) >  
+msf payload(shell_reverse_tcp) >
 \end{verbatim}
 
 	\section{Nop Modules}
@@ -580,7 +580,7 @@ OPTIONS:
     -s <opt>  The comma separated list of registers to save.
     -t <opt>  The output type: ruby, perl, c, or raw.
 
-msf nop(opty2) >     
+msf nop(opty2) >
 \end{verbatim}
 
 \par
@@ -594,7 +594,7 @@ unsigned char buf[] =
 "\x24\xbe\xb1\x3f\x43\x1d\x93\xb2\x37\x35\x84\xd5\x14\x40\xb4"
 "\xb3\x41\xb9\x48\x04\x99\x46\xa9\xb0\xb7\x2f\xfd\x96\x4a\x98"
 "\x92\xb5\xd4\x4f\x91";
-msf nop(opty2) >   
+msf nop(opty2) >
 \end{verbatim}
 
 \pagebreak
@@ -603,7 +603,7 @@ msf nop(opty2) >
 \par
 This section covers some of the advanced features that can be found in this
 release. These features can be used in any compatible exploit and highlight
-the strength of developing attack code using an exploit framework. 
+the strength of developing attack code using an exploit framework.
 
 \section{The Meterpreter}
 \par
@@ -622,7 +622,7 @@ patching the registry of the target system and causing the exploited process
 to launch internet explorer with a URL pointing back to the Framework. The
 Framework starts up a simple web server that accepts the request and sends
 back a web page instructing it to load an ActiveX component. The exploited
-system then downloads, registers, and executes the ActiveX. 
+system then downloads, registers, and executes the ActiveX.
 
 \par
 The basic PassiveX payload, \texttt{windows/xxx/reverse\_http}, supports any
@@ -654,7 +654,7 @@ in the format type:host:port. The type values are 'http' for HTTP CONNECT and
 the system was stable with over five hundred SOCKS and HTTP proxies configured
 randomly in a chain. The proxy chain only masks the exploit request, the
 automatic connection to the payload is not relayed through the proxy chain at
-this time. 
+this time.
 
 \section{Win32 UploadExec Payloads}
 \par
@@ -665,7 +665,7 @@ simultaneously exploit a Windows system, upload your favorite tool, and execute
 it, all across the payload socket connection. When combined with a
 self-extracting rootkit or scripting language interpreter (perl.exe!), this can
 be a very powerful feature. The Meterpreter payloads are usually much better
-suited for penetration testing tasks.  
+suited for penetration testing tasks.
 
 \section{Win32 DLL Injection Payloads}
 \par
@@ -686,7 +686,7 @@ variable. If you would like to write your own DLL payloads, refer to the
 external/source/dllinject directory in the Framework. In additional to normal
 DLL Injection, version 3.2 and newer include support for Reflective DLL Injection
 payloads as well. For more information about Reflective DLL Injection, please see
-the Harmony Security paper, located at 
+the Harmony Security paper, located at
 \url{http://www.harmonysecurity.com/files/HS-P005_ReflectiveDllInjection.pdf}.
 
 \section{VNC Server DLL Injection}
@@ -700,7 +700,7 @@ loaded into the remote process using any of the staged loader systems, started
 up as a new thread in the exploited process, and the listens for VNC client
 requests on the same socket used to load the DLL. The Framework listens
 on a local socket for a VNC client and proxies data across the payload
-connection to the server.  
+connection to the server.
 
 \par
 The VNC server will attempt to obtain full access to the current interactive
@@ -711,7 +711,7 @@ view the contents of the desktop, but not interact with it. If full access was
 obtained, the VNC server will spawn a command shell on the desktop with the
 privileges of the exploited service. This is useful in situations where an
 unprivileged user is on the interactive desktop, but the exploited service is
-running with System privileges.  
+running with System privileges.
 
 \par
 If there is no interactive user logged into the system or the screen has been
@@ -719,14 +719,14 @@ locked, the command shell can be used to launch explorer.exe anyways. This can
 result in some very confused users when the logon screen also has a Start Menu.
 If the interactive desktop is changed, either through someone logging into the
 system or locking the screen, the VNC server will disconnect the client. Future
-versions may attempt to follow a desktop switch. 
+versions may attempt to follow a desktop switch.
 
 \par
 To use the VNC injection payloads, specify the full path to the VNC server as
 the value of the \texttt{DLL} option. The VNC server can be found in the data
 subdirectory of the Framework installation and is named 'vncdll.dll'. The source
 code of the DLL can be found in the external/source/vncdll
-subdirectory of the Framework installation. 
+subdirectory of the Framework installation.
 
 \par
 There are a few situations where the VNC inject payload
@@ -754,7 +754,7 @@ msf exploit(ms04_011_lsass) > exploit
 If the "vncviewer" application is in your path and the AUTOVNC option has been
 set (it is by default), the Framework will automatically open the VNC desktop.
 If you would like to connect to the desktop manually, \texttt{set AUTOVNC 0}, then use
-vncviewer to connect to 127.0.0.1 on port 5900. 
+vncviewer to connect to 127.0.0.1 on port 5900.
 
 \pagebreak
 \chapter{More Information}
@@ -764,7 +764,7 @@ vncviewer to connect to 127.0.0.1 on port 5900.
 \par
 The metasploit.com web site is the first place to check for updated modules and
 new releases. This web site also hosts the Opcode Database and a decent shellcode
-archive.  
+archive.
 
 \section{Mailing List}
 \par
@@ -806,7 +806,7 @@ Terminal Emulator Security Issues paper at
 	\section{Tab Completion}
 	\label{REF-TAB}
 \par
-On the UNIX and Cygwin platforms, tab completion depends on the existence of the Readline 
+On the UNIX and Cygwin platforms, tab completion depends on the existence of the Readline
 library when Ruby was compiled. Some operating systems, such as Mac OS X, have included
 a version of Ruby without this support. To solve this problem, grab the latest version
 of the Readline library, configure, build, and install it. Then grab the latest version
@@ -820,7 +820,7 @@ of the Ruby interpreter and do the same. The resulting Ruby binary can be used t
 Nearly all TCP-based exploit and auxiliary modules have builtin support for the Secure Socket Layer.
 This is a feature of the Socket class included with the Rex library. To indicate that all connections
 should use SSL, set the \texttt{SSL} environment variable to \texttt{true} from within the Framework
-interface. Keep in mind, that in most cases the default \texttt{RPORT} variable will need to be 
+interface. Keep in mind, that in most cases the default \texttt{RPORT} variable will need to be
 changed as well. For example, when exploiting a web application vulnerability through SSL, the
 \texttt{RPORT} value should be set to \texttt{443}.
 
@@ -838,25 +838,25 @@ All rights reserved.
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
 
-    * Redistributions of source code must retain the above copyright notice, 
+    * Redistributions of source code must retain the above copyright notice,
 	  this list of conditions and the following disclaimer.
 
     * Redistributions in binary form must reproduce the above copyright notice,
 	  this list of conditions and the following disclaimer in the documentation
 	  and/or other materials provided with the distribution.
 
-    * Neither the name of Rapid7 LLC nor the names of its contributors 
-	  may be used to endorse or promote products derived from this software 
+    * Neither the name of Rapid7 LLC nor the names of its contributors
+	  may be used to endorse or promote products derived from this software
 	  without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
 DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
 ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
 LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 \end{verbatim}}
