@@ -60,7 +60,7 @@ shellcode development, and vulnerability research.
 
 \chapter{Installation}
 
-    \section{Installation on Unix}
+    \section{Installation on UNIX}
     \label{INSTALL-UNIX}
 \par
 Installing the Framework is as easy as extracting the tarball, changing into the
@@ -119,8 +119,9 @@ Linux-based virtual machine (such as BackTrack 3 in VMWare).
     \label{INSTALL-SUPPORT}
 
 \par
-The Framework should run on almost any Unix-based operating system that includes a complete and modern version 
-of the Ruby interpreter (1.8.4+). Every stable version of the Framework is tested with three primary platforms: 
+The Framework should run on almost any UNIX-based operating system that includes
+a complete and modern version of the Ruby interpreter (1.8.4+). Every stable
+version of the Framework is tested with three primary platforms: 
 
 \begin{itemize}
 \item Linux 2.6 (x86, ppc)
@@ -140,7 +141,7 @@ support site at \url{http://metasploit.com/get-support}.
 The Framework can be updated using a standard \texttt{Subversion} client. The
 old \texttt{msfupdate} tool is no longer supported. Windows users can click on
 the Online Update link within the Metasploit 3 program folder on the Start Menu.
-To obtain the latest updates on a Unix-like platform, change into the Framework 
+To obtain the latest updates on a UNIX-like platform, change into the Framework 
 installation directory and execute \texttt{svn update}. If you are accessing the
 internet through an HTTP proxy server, please see the Subversion FAQ for proxy 
 access at \url{http://subversion.apache.org/faq.html#proxy}.
@@ -657,7 +658,7 @@ this time.
 
 \section{Win32 UploadExec Payloads}
 \par
-Although Unix systems normally include all of the tools you need for
+Although UNIX systems normally include all of the tools you need for
 post-exploitation, Windows systems are notoriously lacking in a decent command
 line toolkit. The windows/upexec/* payloads included in this release allow you to
 simultaneously exploit a Windows system, upload your favorite tool, and execute
@@ -805,7 +806,7 @@ Terminal Emulator Security Issues paper at
 	\section{Tab Completion}
 	\label{REF-TAB}
 \par
-On the Unix and Cygwin platforms, tab completion depends on the existence of the Readline 
+On the UNIX and Cygwin platforms, tab completion depends on the existence of the Readline 
 library when Ruby was compiled. Some operating systems, such as Mac OS X, have included
 a version of Ruby without this support. To solve this problem, grab the latest version
 of the Readline library, configure, build, and install it. Then grab the latest version
