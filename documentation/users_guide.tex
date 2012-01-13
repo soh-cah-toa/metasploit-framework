@@ -116,19 +116,46 @@ attacks without specific configuration. In most cases, those features can be
 accessed by running Metasploit inside of a Linux-based virtual machine (such as
 BackTrack 3 in VMWare).
 
+    \section{Minimum System Requirements}
+    \label{INSTALL-REQUIRE}
+
+\par
+As a general guideline, your system should meet the minimum system requirements
+described below:
+
+\begin{itemize}
+\item 2 GHz processor
+\item 2 GB available RAM (4 GB is recommended)
+\item 500MB available disk space
+\item 10/100 Mb/s NIC
+\end{itemize}
+
     \section{Supported Operating Systems}
     \label{INSTALL-SUPPORT}
 
 \par
 The Framework should run on almost any UNIX-based operating system that includes
-a complete and modern version of the Ruby interpreter (1.8.4+). Every stable
+a complete and modern version of the Ruby interpreter (1.8.6+). Every stable
 version of the Framework is tested with three primary platforms:
 
 \begin{itemize}
-\item Linux 2.6 (x86, ppc)
-\item Windows NT (2000, XP, 2003, Vista)
-\item MacOS X 10.5 (x86, ppc)
+\item Linux kernel 2.6 (x86, x86\_64, PPC)
+\item Windows NT (XP, 2003 Server, Vista, 2008 Server, Windows 7)
+\item Mac OS X 10.5 (x86, x86\_64, PPC)\footnote{Some users have experienced
+      occasional problems while trying to install the Framework on Mac OS X.
+      While it is a supported platform, most of the problems are related to
+      PostgreSQL and the pg gem. If you have trouble during the installation,
+      take a look at
+      \url{http://dl.dropbox.com/u/1440188/msf\%20in\%20osx\%20with\%20armitage.pdf}}
 \end{itemize}
+
+\par
+For small to medium-scale penetration tests, both Linux-based and Windows
+platforms perform about the same. If you are conducting a large-scale
+penetration test (10,000+ hosts), we recommend using the Metasploit Framework
+on a Linux-based operating system as it is more scalable and copes better with
+expanding use.\footnote{See Christian Kirsch's post on the subject:
+\url{https://community.rapid7.com/message/1988}}
 
 \par
 For information about manually installing the Framework, including all of the
