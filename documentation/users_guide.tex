@@ -50,8 +50,8 @@ found on the Metasploit Framework web site.
 
 \par
 The Metasploit Framework is a platform for writing, testing, and using exploit
-code. The primary users of the Framework are professionals performing
-penetration testing, shellcode development, and vulnerability research.
+code. The primary users of Metasploit are professionals performing penetration
+testing, shellcode development, and vulnerability research.
 
 \par
 \pagebreak
@@ -62,25 +62,26 @@ penetration testing, shellcode development, and vulnerability research.
     \label{INSTALL-UNIX}
 
 \par
-Installing the Framework is as easy as extracting the tarball, changing into the
-created directory, and executing your preferred user interface. We strongly
-recommend that you use a version of the Ruby interpreter that was built with
-support for the GNU Readline library. If you are using the Framework on Mac OS
-X prior to 10.5.1, you will need to install GNU Readline\footnote{GNU Readline
-homepage: \url{http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html}} and
-then recompile the Ruby interpreter. Using a version of Ruby with Readline
-support enables tab completion in the console interface. The \texttt{msfconsole}
-user interface is preferred for everyday use, but \texttt{msfgui} can be useful
-for those who prefer a graphical interface.
+Installing the Metasploit Framework is as easy as extracting the tarball,
+changing into the created directory, and executing your preferred user
+interface. We strongly recommend that you use a version of the Ruby interpreter
+that was built with support for the GNU Readline library. If you are using the
+Metasploit on Mac OS X prior to 10.5.1, you will need to install GNU
+Readline\footnote{GNU Readline homepage:
+\url{http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html}} and then
+recompile the Ruby interpreter. Using a version of Ruby with Readline support
+enables tab completion in the console interface. The \texttt{msfconsole} user
+interface is preferred for everyday use, but \texttt{msfgui} can be useful for
+those who prefer a graphical interface.
 
 \par
 To perform a system-wide installation, we recommend that you copy the entire
-Framework directory into a globally accessible location (/usr/local/msf) and
-then create symbolic links from the msf* applications to a directory in the
-system path (/usr/local/bin). User-specific modules can be placed into
-\texttt{HOME/.msf3/modules} directory. The structure of this directory should
-mirror that of the global modules directory found in the framework
-distribution.
+Metasploit root directory into a globally accessible location (e.g.
+\texttt{/usr/local/msf}) and then create symbolic links from the \texttt{msf*}
+applications to a directory in the system path (e.g. \texttt{/usr/local/bin}).
+User-specific modules can be placed in \texttt{\$HOME/.msf3/modules}. The
+structure of this directory should mirror that of the global modules directory
+found in the framework distribution.
 
 \par
 The latest stable release of the Ruby interpreter (1.8.7-p72) contains a bug
@@ -95,17 +96,17 @@ For more information about this issue, please see the related Ubuntu ticket at
     \label{INSTALL-WIN32}
 
 \par
-The Metasploit Framework is fully supported on the Windows platform. To install the
-Framework on Windows, download the latest version of the Windows installer from
+The Metasploit Framework is fully supported on the Windows platform. To install
+Metasploit on Windows, download the latest version of the Windows installer from
 \url{http://metasploit.com/download}, perform an online update, and launch the
-\texttt{msfgui} interface from the Start Menu. To access a standard \texttt{msfconsole}
-interface, select the Console option from the Window menu.
+\texttt{msfgui} interface from the Start Menu. To access a standard
+\texttt{msfconsole} interface, select the Console option from the Window menu.
 
     \section{Platform Caveats}
     \label{INSTALL-CAVEAT}
 
 \par
-When using the Framework on the Windows platform, keep in mind that
+When using the Metasploit on the Windows platform, keep in mind that
 \texttt{msfgui} is the only supported user interface. While \texttt{msfcli} may
 appear to work on the command line, it will will run into trouble as soon as
 more than one active thread is present. This can prevent most exploits,
@@ -134,15 +135,15 @@ described below:
     \label{INSTALL-SUPPORT}
 
 \par
-The Framework should run on almost any UNIX-based operating system that includes
-a complete and modern version of the Ruby interpreter (1.8.6+). Every stable
-version of the Framework is tested with three primary platforms:
+The Metasploit Framework should run on almost any UNIX-based operating system
+that includes a complete and modern version of the Ruby interpreter (1.8.6+).
+Every stable version of Metasploit is tested with three primary platforms:
 
 \begin{itemize}
 \item Linux kernel 2.6 (x86, x86\_64, PPC)
 \item Windows NT (XP, 2003 Server, Vista, 2008 Server, Windows 7)
 \item Mac OS X 10.5 (x86, x86\_64, PPC)\footnote{Some users have experienced
-      occasional problems while trying to install the Framework on Mac OS X.
+      occasional problems while trying to install Metasploit on Mac OS X.
       While it is a supported platform, most of the problems are related to
       PostgreSQL and the pg gem. If you have trouble during the installation,
       take a look at
@@ -158,21 +159,22 @@ expanding use.\footnote{See Christian Kirsch's post on the subject:
 \url{https://community.rapid7.com/message/1988}}
 
 \par
-For information about manually installing the Framework, including all of the
+For information about manually installing Metasploit, including all of the
 required dependencies needed to use the new \texttt{msfgui} interface, please
-see the Framework support site at \url{http://metasploit.com/get-support}.
+see the Metasploit support site at \url{http://metasploit.com/get-support}.
 
-    \section{Updating the Framework}
+    \section{Updating the Metasploit Framework}
     \label{INSTALL-UPDATE}
 
 \par
-The Framework can be updated using a standard \texttt{Subversion} client. The
-old \texttt{msfupdate} tool is no longer supported. Windows users can click on
-the Online Update link within the Metasploit 3 program folder on the Start Menu.
-To obtain the latest updates on a UNIX-like platform, change into the Framework
-installation directory and execute \texttt{svn update}. If you are accessing the
-internet through an HTTP proxy server, please see the Subversion FAQ for proxy
-access at \url{http://subversion.apache.org/faq.html#proxy}.
+The Metasploit Framework can be updated using a standard \texttt{Subversion}
+client. The old \texttt{msfupdate} tool is no longer supported. Windows users
+can click on the Online Update link within the Metasploit 3 program folder on
+the Start Menu. To obtain the latest updates on a UNIX-like platform, change
+into the Framework installation directory and execute \texttt{svn update}. If
+you are accessing the internet through an HTTP proxy server, please see the
+Subversion FAQ for proxy access at
+\url{http://subversion.apache.org/faq.html#proxy}.
 
 \pagebreak
 
@@ -182,12 +184,12 @@ access at \url{http://subversion.apache.org/faq.html#proxy}.
     \label{STARTED-CONSOLE}
 
 \par
-After you have installed the Framework, you should verify that everything is
+After you have installed Metasploit, you should verify that everything is
 working properly. The easiest way to do this is to execute the
 \texttt{msfconsole} user interface. If you are using Windows, start the
 \texttt{msfgui} interface and access the \texttt{Console} link from the Window
 menu. The console should display an ASCII art logo, print the current version,
-some module counts, and drop to a "msf> " prompt. From this prompt, type
+some module counts, and drop to a \texttt{msf> } prompt. From this prompt, type
 \texttt{help} to get a list of valid commands. You are currently in the "main"
 mode; this allows you to list exploits, list payloads, and configure global
 options. To list all available exploits, type \texttt{show exploits}. To obtain
@@ -276,17 +278,17 @@ them, and take advantage of them in the \texttt{msfcli} interface. As of version
 \chapter{The DataStore}
 
 \par
-The datastore system is a core component of the Framework. The interfaces use
-it to configure settings, the payloads use it patch opcodes, the exploits use it
-to define parameters, and it is used internally to pass options between modules.
-There are two types of datastores. First, there is a single global datastore
-that can be accessed using the \texttt{setg} and \texttt{unsetg} commands from
-\texttt{msfconsole}. Second, each module instance has its own datastore in which
-arbitrary options or parameters can be stored. For example, when the
-\texttt{RHOST} option is set, its value is stored in the datastore of the module
-instance that it was set relative to. In the event that an option was not set in
-a module instance's datastore, the framework will consult the global datastore
-to see if it was set there.
+The datastore system is a core component of the Metasploit Framework. The
+different interfaces use it to configure settings, the payloads use it patch
+opcodes, the exploits use it to define parameters, and it is used internally to
+pass options between modules. There are two types of datastores. First, there is
+a single global datastore that can be accessed using the \texttt{setg} and
+\texttt{unsetg} commands from \texttt{msfconsole}. Second, each module instance
+has its own datastore in which arbitrary options or parameters can be stored.
+For example, when the \texttt{RHOST} option is set, its value is stored in the
+datastore of the module instance that it was set relative to. In the event that
+an option was not set in a module instance's datastore, Metasploit will consult
+the global datastore to see if it was set there.
 
     \section{Global DataStore}
     \label{ENV-GLOBAL}
@@ -377,39 +379,34 @@ Payload options:
     \label{ENV-VAR}
 
 \par
-The datastore can be used to configure many aspects of the Framework, ranging
-from user interface settings to specific timeout options in the network socket
-API. This section describes the most commonly used environment variables.
-
-\par
-For a complete listing of all environment variables, please see the file
-Environment.txt in the ``documentation'' subdirectory of the Framework.
+The datastore can be used to configure many aspects of the Metasploit Framework,
+ranging from user interface settings to specific timeout options in the network
+socket API. This section describes the most commonly used environment variables.
 
 	\subsection{LogLevel}
 
 \par
-This variable is used to control the verbosity of log messages provided by the
-components of the Framework. If this variable is not set, framework logging is
-disabled. Setting this variable to 0 will turn on default log messages. A value
-of 1 will enable additional, non-verbose log messages that may be helpful in
-troubleshooting. A value of 2 will enable verbose debug logging. A value of 3
-will enable all logging and may generate a large amount of log messages. Only
-use this when much additional information is required. Log files are stored in
-the logs subdirectory of the user's configuration directory (~/.msf3/logs).
-Unlike version 2 of the framework, debugging messages are never written directly
-to the console.
+The \texttt{LogLevel} variable is used to control the verbosity of log messages
+provided by the various components of the framework. If this variable is not
+set, logging will be disabled. Setting this variable to \texttt{0} will turn on
+default log messages. A value of \texttt{1} will enable additional, non-verbose
+log messages that may be helpful while troubleshooting. A value of \texttt{2}
+will enable verbose debug logging. A value of \texttt{3} will enable all logging
+and may generate a large amount of log messages. Use this only when much
+additional information is required. Log files are stored in the
+\texttt{\$HOME/.msf3/logs} directory.
 
 	\subsection{MsfModulePaths}
 
 \par
 The \texttt{MsfModulePaths} variable can be used to add additional directories
-from which to load modules. By default, the Framework will load modules from the
-\texttt{modules} directory in the Framework's root directory. It will also load
-modules from \texttt{~/.msf3/modules} if such a path exists.
+from which to load modules. By default, Metasploit will load modules from the
+\texttt{modules} directory in the Metasploit root directory. It will also load
+modules from \texttt{\$HOME/.msf3/modules} if such a path exists.
 
 \pagebreak
 
-\chapter{Using the Framework}
+\chapter{Using the Metasploit Framework}
 
 	\section{Choosing a Module}
 
@@ -654,16 +651,16 @@ what you can do with it. The Meterpreter manual is available online at
 \par
 The Metasploit Framework can be used to load arbitrary ActiveX controls into a
 target process. This feature works by patching the registry of the target system
-and causing the exploited process to launch internet explorer with a URL
-pointing back to the Framework. The Framework starts up a simple web server that
-accepts the request and sends back a web page instructing it to load an ActiveX
-component. The exploited system then downloads, registers, and executes the
-ActiveX.
+and causing the exploited process to launch Internet Explorer with a URL
+pointing back to attacker's machine. Metasploit starts up a simple web server
+that accepts the request and sends back a web page instructing it to load an
+ActiveX component. The exploited system then downloads, registers, and executes
+the ActiveX control.
 
 \par
 The basic PassiveX payload, \texttt{windows/xxx/reverse\_http}, supports any
 custom ActiveX that you develop. In addition to the base payload, three other
-PassiveX modules are included in the Framework. These can be used to execute a
+PassiveX modules are included in the framework. These can be used to execute a
 command shell, load the Meterpreter, or inject a VNC service. When any of these
 three payloads are used, the PassiveX object will emulate a TCP connection
 through HTTP GET and POST requests. This allows you to interact with a command
@@ -681,7 +678,7 @@ located online at \url{http://www.uninformed.org/?v=1&a=3&t=pdf}.
 \section{Chainable Proxies}
 
 \par
-The Framework includes transparent support for TCP proxies, this release has
+Metasploit includes transparent support for TCP proxies, this release has
 handler routines for HTTP CONNECT and SOCKSv4 servers. To use a proxy with a
 given exploit, the \texttt{Proxies} environment variable needs to be set. The
 value of this variable is a comma-separated list of proxy servers, where each
@@ -707,7 +704,7 @@ suited for penetration testing tasks.
 \section{Win32 DLL Injection Payloads}
 
 \par
-The Framework includes a staged payload that is capable of injecting a custom
+Metasploit includes a staged payload that is capable of injecting a custom
 DLL into memory in combination with any Win32 exploit. This payload will not
 result in any files being written to disk; the DLL is loaded directly into
 memory and is started as a new thread in the exploited process. This payload was
@@ -720,11 +717,11 @@ payload connection. The Init function becomes the entry point for the new thread
 in the exploited process. When processing is complete, it should return and
 allow the loader stub to exit the process according to the \texttt{EXITFUNC}
 environment variable. If you would like to write your own DLL payloads, refer to
-the external/source/dllinject directory in the Framework. In additional to
-normal DLL Injection, version 3.2 and newer include support for Reflective DLL
-Injection payloads as well. For more information about Reflective DLL Injection,
-please see the Harmony Security paper, located at
-\url{http://www.harmonysecurity.com/files/HS-P005_ReflectiveDllInjection.pdf}.
+the \texttt{external/source/dllinject} directory in the Metasploit root
+directory. In addition to normal DLL injection, Metasploit also supports
+Reflective DLL Injection payloads as well. For more information about Reflective
+DLL Injection, please see the Harmony Security paper, located at
+\url{http://www.harmonysecurity.com/files/HS-P005\_ReflectiveDllInjection.pdf}.
 
 \section{VNC Server DLL Injection}
 
@@ -736,15 +733,15 @@ non-interactive network services. This payload allows you to immediately access
 the desktop of an exploited system using almost any Win32 exploit. The DLL is
 loaded into the remote process using any of the staged loader systems, started
 up as a new thread in the exploited process, and the listens for VNC client
-requests on the same socket used to load the DLL. The Framework listens on a
-local socket for a VNC client and proxies data across the payload connection to
-the server.
+requests on the same socket used to load the DLL. Metasploit listens on a local
+socket for a VNC client and proxies data across the payload connection to the
+server.
 
 \par
 The VNC server will attempt to obtain full access to the current interactive
-desktop. If the first attempt fails, it will call RevertToSelf() and then try
-the attempt again. If it still fails to obtain full access to this desktop, it
-will fall back to a read-only mode. In read-only mode, the Framework user can
+desktop. If the first attempt fails, it will call \texttt{RevertToSelf()} and
+then try the attempt again. If it still fails to obtain full access to this
+desktop, it will fall back to a read-only mode. In read-only mode, the user can
 view the contents of the desktop, but not interact with it. If full access was
 obtained, the VNC server will spawn a command shell on the desktop with the
 privileges of the exploited service. This is useful in situations where an
@@ -761,10 +758,10 @@ versions may attempt to follow a desktop switch.
 
 \par
 To use the VNC injection payloads, specify the full path to the VNC server as
-the value of the \texttt{DLL} option. The VNC server can be found in the data
-subdirectory of the Framework installation and is named 'vncdll.dll'. The source
-code of the DLL can be found in the \texttt{external/source/vncdll} subdirectory
-of the Framework root directory.
+the value of the \texttt{DLL} option. The VNC server can be found in the
+\texttt{data} subdirectory of the Metasploit root directory and is named
+\texttt{vncdll.dll}. The source code of the DLL can be found in
+\texttt{external/source/vncdll}.
 
 \par
 There are a few situations where the VNC inject payload will simply not work.
@@ -790,10 +787,10 @@ LPORT => 4321
 msf exploit(ms04_011_lsass) > exploit
 \end{verbatim}
 
-If the "vncviewer" application is in your path and the AUTOVNC option has been
-set (it is by default), the Framework will automatically open the VNC desktop.
+If the \texttt{vncviewer} application is in your path and the AUTOVNC option has
+been set (it is by default), Metasploit will automatically open the VNC desktop.
 If you would like to connect to the desktop manually, \texttt{set AUTOVNC 0},
-then use vncviewer to connect to 127.0.0.1 on port 5900.
+then use \texttt{vncviewer} to connect to 127.0.0.1 on port 5900.
 
 \pagebreak
 
@@ -818,7 +815,7 @@ help. To subscribe to the mailing list, visit
 \section{Developers}
 
 \par
-If you are interested in helping out with the Framework project, or have any
+If you are interested in helping out with the Metasploit Project, or have any
 questions related to module development, please contact the development team.
 The Metasploit Framework development team can be reached at
 msfdev[at]metasploit.com.
@@ -870,7 +867,7 @@ interface with full tab completion of known commands.
 Nearly all TCP-based exploit and auxiliary modules have builtin support for the
 Secure Sockets Layer. This is a feature of the Socket class included with the
 Rex library. To indicate that all connections should use SSL, set the
-\texttt{SSL} environment variable to \texttt{true} from within the Framework
+\texttt{SSL} environment variable to \texttt{true} from within the console
 interface. Keep in mind, that in most cases the default \texttt{RPORT} variable
 will need to be changed as well. For example, when exploiting a web application
 vulnerability through SSL, the \texttt{RPORT} variable should be set to
