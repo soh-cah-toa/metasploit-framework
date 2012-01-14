@@ -272,198 +272,6 @@ them, and take advantage of them in the \texttt{msfcli} interface. The
 
 \pagebreak
 
-\chapter{The Datastore}
-
-\par
-The datastore is a dynamic table of named values (much like a hash) that lets
-the user alter the behavior of certain components of the Metasploit Framework.
-The various components use it to configure settings, patch opcodes, define
-parameters, pass options between modules, etc. There are two different types of
-datastores: the \textit{global} and \textit{module} datastores. The only
-difference being the scope in which their settings can be seen.
-
-\par
-When Metasploit looks for a variable (e.g. \texttt{RHOST} or \texttt{THREADS})
-it searches for it in the current module's datastore first. If it can't be found, 
-the global datastore is then searched last.
-
-    \section{Global Datastore}
-    \label{ENV-GLOBAL}
-
-\par
-The contents of the global datastore are applied to all modules. For instance,
-if the \texttt{RHOSTS} variable is set in the global datastore, the same value
-will be used no matter what module is currently being used.
-
-\par
-The global datastore is accessed through \texttt{msfconsole} using the
-\texttt{setg} and \texttt{unsetg} commands. Calling \texttt{setg} with one
-argument shows the current value of that option (if it exists). If no arguments
-are given, then the entire contents of the global datastore will be displayed.
-
-\begin{verbatim}
-msf > setg
-
-Global
-======
-
-No entries in data store.
-
-\end{verbatim}
-
-\par
-As you can, the global datastore is initially empty by default. We'll explain
-in a little bit how to save these settings to disk so that they're loaded when
-\texttt{msfconsole} starts.
-
-    \section{Module Datastore}
-    \label{ENV-TEMP}
-
-\par
-The contents of the module datastore are only applicable to the currently loaded
-module. Switching to another module via the \texttt{use} command will result in
-the datastore for the current module being swapped out with the datastore of the
-new module.
-
-\par
-The module datastore is accessed through the \texttt{set} and \texttt{unset}
-commands. Calling \texttt{set} with one argument shows the current value of that
-option (if it exists). If no arguments are given, then the entire contents of
-the module datastore will be displayed. If no module is currently active, the
-\texttt{set} and \texttt{unset} commands will operate in the context of the
-global datastore.
-
-\par
-Consider the following example, using the \texttt{windows/smb/ms08\_067\_netapi}
-module.
-
-{\footnotesize
-\begin{verbatim}
-msf  exploit(ms08_067_netapi) > show options
-
-Module options (exploit/windows/smb/ms08_067_netapi):
-
-   Name     Current Setting  Required  Description
-   ----     ---------------  --------  -----------
-   RHOST                     yes       The target address
-   RPORT    445              yes       Set the SMB service port
-   SMBPIPE  BROWSER          yes       The pipe name to use (BROWSER, SRVSVC)
-
-
-Exploit target:
-
-   Id  Name
-   --  ----
-   0   Automatic Targeting
-
-
-msf  exploit(ms08_067_netapi) > set RHOST 192.168.1.156
-RHOST => 192.168.1.156
-msf  exploit(ms08_067_netapi) >
-\end{verbatim}
-}
-
-% TODO Fix this paragraph so that the string windows/smb/smb_relay
-%      does not stick out into the right margin
-
-\par
-At this point, if you decided to use another module instead - say
-\texttt{windows/smb/smb\_relay} - the \texttt{RHOST} variable would no longer
-retain its value since it was stored in the datastore for
-\texttt{windows/smb/ms08\_067\_netapi}.
-
-\par
-As noted earlier, Metasploit queries the module datastore first when searching
-for an option or variable. If none is found, then the global datastore is
-searched. This means that if a variable like \texttt{RHOST} is set in both the
-module and global datastores, the value of \texttt{RHOST} in the module
-datastore will take precedence. This behavior allows you to effectively mask or
-alias variables and options set in the global datastore.
-
-    \section{Saving the Datastore}
-    \label{ENV-SAVE}
-
-\par
-Sometimes it can become quite tedious to constantly set a variable that you
-use reguarly. This is where the \texttt{save} command comes in. The
-\texttt{save} command can be used to serialize the global and all module
-datastores to disk. The saved environment is written to
-\texttt{\$HOME/.msf4/config} and will be loaded when any of the user interfaces
-are executed.
-
-    \section{Datastore Efficiency}
-    \label{ENV-EFF}
-
-\par
-This split datastore system allows you save time during exploit development
-and penetration testing. Common options between exploits can be defined in the
-global datastore once and automatically used in any exploit you load thereafter.
-
-\par
-The example below shows how setting the \texttt{LPORT}, \texttt{LHOST}, and
-\texttt{PAYLOAD} variables in the global datastore can save you time when
-exploiting a set of Windows-based targets. If this datastore was set and a Linux
-exploit was being used, the module datastore could be used (via \texttt{set} and
-\texttt{unset}) to override these defaults.
-
-{\footnotesize
-\begin{verbatim}
-f > setg LHOST 192.168.0.10
-LHOST => 192.168.0.10
-msf > setg LPORT 4445
-LPORT => 4445
-msf > setg PAYLOAD windows/shell/reverse_tcp
-PAYLOAD => windows/shell/reverse_tcp
-msf > use windows/smb/ms04_011_lsass
-msf exploit(ms04_011_lsass) > show options
-
-Module options:
-
-...
-
-Payload options:
-
-   Name      Current Setting  Required  Description
-   ----      ---------------  --------  -----------
-   EXITFUNC  thread           yes       Exit technique: seh, thread, process
-   LHOST     192.168.0.10     yes       The local address
-   LPORT     4445             yes       The local port
-
-...
-
-\end{verbatim}}
-
-    \section{Datastore Variables}
-    \label{ENV-VAR}
-
-\par
-The datastore can be used to configure many aspects of the Metasploit Framework,
-ranging from user interface settings to specific timeout options in the network
-socket API. This section describes the most commonly used environment variables.
-
-	\subsection{LogLevel}
-
-\par
-The \texttt{LogLevel} variable is used to control the verbosity of log messages
-provided by the various components of the framework. If this variable is not
-set, logging will be disabled. Setting this variable to \texttt{0} will turn on
-default log messages. A value of \texttt{1} will enable additional, non-verbose
-log messages that may be helpful while troubleshooting. A value of \texttt{2}
-will enable verbose debug logging. A value of \texttt{3} will enable all logging
-and may generate a large amount of log messages. Use this only when much
-additional information is required. Log files are stored in the
-\texttt{\$HOME/.msf4/logs} directory.
-
-	\subsection{MsfModulePaths}
-
-\par
-The \texttt{MsfModulePaths} variable can be used to add additional directories
-from which to load modules. By default, Metasploit will load modules from the
-\texttt{modules} directory in the Metasploit root directory. It will also load
-modules from \texttt{\$HOME/.msf4/modules} if such a path exists.
-
-\pagebreak
-
 \chapter{Using the Metasploit Framework}
 
 	\section{Choosing a Module}
@@ -683,6 +491,198 @@ unsigned char buf[] =
 "\x92\xb5\xd4\x4f\x91";
 msf nop(opty2) >
 \end{verbatim}
+
+\pagebreak
+
+\chapter{The Datastore}
+
+\par
+The datastore is a dynamic table of named values (much like a hash) that lets
+the user alter the behavior of certain components of the Metasploit Framework.
+The various components use it to configure settings, patch opcodes, define
+parameters, pass options between modules, etc. There are two different types of
+datastores: the \textit{global} and \textit{module} datastores. The only
+difference being the scope in which their settings can be seen.
+
+\par
+When Metasploit looks for a variable (e.g. \texttt{RHOST} or \texttt{THREADS})
+it searches for it in the current module's datastore first. If it can't be found, 
+the global datastore is then searched last.
+
+    \section{Global Datastore}
+    \label{ENV-GLOBAL}
+
+\par
+The contents of the global datastore are applied to all modules. For instance,
+if the \texttt{RHOSTS} variable is set in the global datastore, the same value
+will be used no matter what module is currently being used.
+
+\par
+The global datastore is accessed through \texttt{msfconsole} using the
+\texttt{setg} and \texttt{unsetg} commands. Calling \texttt{setg} with one
+argument shows the current value of that option (if it exists). If no arguments
+are given, then the entire contents of the global datastore will be displayed.
+
+\begin{verbatim}
+msf > setg
+
+Global
+======
+
+No entries in data store.
+
+\end{verbatim}
+
+\par
+As you can, the global datastore is initially empty by default. We'll explain
+in a little bit how to save these settings to disk so that they're loaded when
+\texttt{msfconsole} starts.
+
+    \section{Module Datastore}
+    \label{ENV-TEMP}
+
+\par
+The contents of the module datastore are only applicable to the currently loaded
+module. Switching to another module via the \texttt{use} command will result in
+the datastore for the current module being swapped out with the datastore of the
+new module.
+
+\par
+The module datastore is accessed through the \texttt{set} and \texttt{unset}
+commands. Calling \texttt{set} with one argument shows the current value of that
+option (if it exists). If no arguments are given, then the entire contents of
+the module datastore will be displayed. If no module is currently active, the
+\texttt{set} and \texttt{unset} commands will operate in the context of the
+global datastore.
+
+\par
+Consider the following example, using the \texttt{windows/smb/ms08\_067\_netapi}
+module.
+
+{\footnotesize
+\begin{verbatim}
+msf  exploit(ms08_067_netapi) > show options
+
+Module options (exploit/windows/smb/ms08_067_netapi):
+
+   Name     Current Setting  Required  Description
+   ----     ---------------  --------  -----------
+   RHOST                     yes       The target address
+   RPORT    445              yes       Set the SMB service port
+   SMBPIPE  BROWSER          yes       The pipe name to use (BROWSER, SRVSVC)
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Automatic Targeting
+
+
+msf  exploit(ms08_067_netapi) > set RHOST 192.168.1.156
+RHOST => 192.168.1.156
+msf  exploit(ms08_067_netapi) >
+\end{verbatim}
+}
+
+% TODO Fix this paragraph so that the string windows/smb/smb_relay
+%      does not stick out into the right margin
+
+\par
+At this point, if you decided to use another module instead - say
+\texttt{windows/smb/smb\_relay} - the \texttt{RHOST} variable would no longer
+retain its value since it was stored in the datastore for
+\texttt{windows/smb/ms08\_067\_netapi}.
+
+\par
+As noted earlier, Metasploit queries the module datastore first when searching
+for an option or variable. If none is found, then the global datastore is
+searched. This means that if a variable like \texttt{RHOST} is set in both the
+module and global datastores, the value of \texttt{RHOST} in the module
+datastore will take precedence. This behavior allows you to effectively mask or
+alias variables and options set in the global datastore.
+
+    \section{Saving the Datastore}
+    \label{ENV-SAVE}
+
+\par
+Sometimes it can become quite tedious to constantly set a variable that you
+use reguarly. This is where the \texttt{save} command comes in. The
+\texttt{save} command can be used to serialize the global and all module
+datastores to disk. The saved environment is written to
+\texttt{\$HOME/.msf4/config} and will be loaded when any of the user interfaces
+are executed.
+
+    \section{Datastore Efficiency}
+    \label{ENV-EFF}
+
+\par
+This split datastore system allows you save time during exploit development
+and penetration testing. Common options between exploits can be defined in the
+global datastore once and automatically used in any exploit you load thereafter.
+
+\par
+The example below shows how setting the \texttt{LPORT}, \texttt{LHOST}, and
+\texttt{PAYLOAD} variables in the global datastore can save you time when
+exploiting a set of Windows-based targets. If this datastore was set and a Linux
+exploit was being used, the module datastore could be used (via \texttt{set} and
+\texttt{unset}) to override these defaults.
+
+{\footnotesize
+\begin{verbatim}
+f > setg LHOST 192.168.0.10
+LHOST => 192.168.0.10
+msf > setg LPORT 4445
+LPORT => 4445
+msf > setg PAYLOAD windows/shell/reverse_tcp
+PAYLOAD => windows/shell/reverse_tcp
+msf > use windows/smb/ms04_011_lsass
+msf exploit(ms04_011_lsass) > show options
+
+Module options:
+
+...
+
+Payload options:
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  thread           yes       Exit technique: seh, thread, process
+   LHOST     192.168.0.10     yes       The local address
+   LPORT     4445             yes       The local port
+
+...
+
+\end{verbatim}}
+
+    \section{Datastore Variables}
+    \label{ENV-VAR}
+
+\par
+The datastore can be used to configure many aspects of the Metasploit Framework,
+ranging from user interface settings to specific timeout options in the network
+socket API. This section describes the most commonly used environment variables.
+
+	\subsection{LogLevel}
+
+\par
+The \texttt{LogLevel} variable is used to control the verbosity of log messages
+provided by the various components of the framework. If this variable is not
+set, logging will be disabled. Setting this variable to \texttt{0} will turn on
+default log messages. A value of \texttt{1} will enable additional, non-verbose
+log messages that may be helpful while troubleshooting. A value of \texttt{2}
+will enable verbose debug logging. A value of \texttt{3} will enable all logging
+and may generate a large amount of log messages. Use this only when much
+additional information is required. Log files are stored in the
+\texttt{\$HOME/.msf4/logs} directory.
+
+	\subsection{MsfModulePaths}
+
+\par
+The \texttt{MsfModulePaths} variable can be used to add additional directories
+from which to load modules. By default, Metasploit will load modules from the
+\texttt{modules} directory in the Metasploit root directory. It will also load
+modules from \texttt{\$HOME/.msf4/modules} if such a path exists.
 
 \pagebreak
 
