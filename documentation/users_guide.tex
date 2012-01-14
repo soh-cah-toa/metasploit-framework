@@ -22,7 +22,7 @@
     \begin{center}
         \huge{Metasploit Framework User's Guide}
 		\ \\[10mm]
-		\large{Version 3.2}
+		\large{Version 4.2}
 		\\[10mm]
 
         \includegraphics{hacker04.jpg}
@@ -79,7 +79,7 @@ To perform a system-wide installation, we recommend that you copy the entire
 Metasploit root directory into a globally accessible location (e.g.
 \texttt{/usr/local/msf}) and then create symbolic links from the \texttt{msf*}
 applications to a directory in the system path (e.g. \texttt{/usr/local/bin}).
-User-specific modules can be placed in \texttt{\$HOME/.msf3/modules}. The
+User-specific modules can be placed in \texttt{\$HOME/.msf4/modules}. The
 structure of this directory should mirror that of the global modules directory
 found in the framework distribution.
 
@@ -223,24 +223,31 @@ msf >
     \label{STARTED-GUI}
 
 \par
-The \texttt{msfgui} interface was introduced in version 3.1 and provides the
-functionality of \texttt{msfconsole} in addition to many new features. To access
-a \texttt{msfconsole} shell, select the Console option from the Window menu. To
-search for a module within the module tree, enter a string or regular expression
-into the search box and click the button labeled Find. All matching modules will
-appear the tree below. To execute a module, double-click its name in the tree,
-or right-click its name and select the Execute option. To view the source code
-of any module, right-click its name and select the View Code option.
+The \texttt{msfgui} interface provides the same functionality of
+\texttt{msfconsole} with all the extras benefits of a graphical user interface.
+
+\par
+To search for a module within the module tree, enter a string or regular
+expression into the search box and click the button labeled \textit{Find}. All
+matching modules will appear in the tree below. To execute a module,
+double-click its name in the tree or right-click its name and select the
+\textit{Execute} option. To view the source code for a particular module,
+right-click its name and select the \textit{View Code} option.
 
 \par
 Once a module is selected, a wizard-based interface will walk you through the
 process of configuring and launching the module. In the case of exploit modules,
-the output from the module will appear in the main window under the Module
-Output tab. Any sessions created by the module will appear in the Sessions view
-in the main window. To access a session, double-click the session name in the
-view, or open a Console and use the \texttt{sessions} command to interact with
-the shell. Meterpreter sessions will spawn a shell when double-clicked, but also
-offer a process and file browser via the right-click context menu.
+the output from the module will appear in the main window under the
+\textit{Module Output} tab. Any sessions created by the module will appear in
+the \textit{Sessions} view in the main window. To access a session, double-click
+the session name in the view or open a \textit{Console} and use the
+\texttt{sessions} command to interact with the shell. Meterpreter sessions will
+spawn a shell when double-clicked and also offer a process and file browser via
+the right-click context menu.
+
+\par
+To run an instance of \texttt{msfconsole} from within the GUI, select the
+\textit{Console} option from the \textit{Window} menu.
 
     \section{The Command Line Interface}
     \label{STARTED-CLI}
@@ -248,20 +255,20 @@ offer a process and file browser via the right-click context menu.
 \par
 If you are looking for a way to automate exploit testing, or simply do not want
 to use an interactive interface, then \texttt{msfcli} may be the solution.
-\footnote{The msfcli interface will not work properly with the native Windows
-version of Ruby} This interface takes a module name as the first parameter,
-followed by the options in a VAR=VAL format, and finally an action code to
-specify what should be done. The module name is used to determine which exploit
-or auxiliary module you want to launch.
+\footnote{The \texttt{msfcli} interface does not work properly with the native
+Windows version of Ruby.} This interface takes a module name as the first
+parameter, followed by the options in a VAR=VAL format, and finally an action
+code to specify what should be done. The module name is used to determine which
+exploit or auxiliary module you want to launch.
 
 \par
 The action code is a single letter; S for summary, O for options, A for advanced
 options, I for IDS evasions, P for payloads, T for targets, AC for auxiliary
 actions, C to try a vulnerability check, and E to exploit. The saved datastore
 will be loaded and used at startup, allowing you to configure convenient default
-options in the Global or module-specific datastore of \texttt{msfconsole}, save
-them, and take advantage of them in the \texttt{msfcli} interface. As of version
-3.1, the \texttt{msfcli} interface will also work with auxiliary modules.
+options in the global or module-specific datastore of \texttt{msfconsole}, save
+them, and take advantage of them in the \texttt{msfcli} interface. The
+\texttt{msfcli} interface will also work with auxiliary modules.
 
 \pagebreak
 
@@ -543,9 +550,9 @@ command shell on the exploited system.
 	\section{Auxiliary Modules}
 
 \par
-Metasploit 3.0 supports the concept of auxiliary modules which can be used to
-perform arbitrary, one-off actions such as port scanning, denial of service, and
-even fuzzing.
+Auxiliary modules are used to perform arbitrary, ``one-off'' actions that are
+not necessarily related to exploitation. For example, port scanning, denial of
+service, fuzzing, etc.
 	
 		\subsection{Running an Auxiliary Task}
 
@@ -573,9 +580,8 @@ channel between Metasploit and the victim host.
 		\subsection{Generating a Payload}
 
 \par
-The console interface supports generating different forms of a payload. This is
-a new feature in Metasploit 3.0. To generate payloads, first select a payload
-through the \texttt{use} command.
+The console interface supports generating different forms of a payload. To
+generate payloads, first select a payload using the \texttt{use} command.
 
 \begin{verbatim}
 msf > use windows/shell_reverse_tcp
